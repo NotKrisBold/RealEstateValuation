@@ -7,6 +7,15 @@ real_estate_valuation = fetch_ucirepo(id=477)
 df_features = pd.DataFrame(real_estate_valuation.data.features, columns=real_estate_valuation.feature_names)
 df_targets = pd.DataFrame(real_estate_valuation.data.targets, columns=real_estate_valuation.target_names)
 
+import pandas as pd
+
+# Calcolare la correlazione tra features e target
+correlation_with_target = df_features.corrwith(df_targets.squeeze())
+
+# Stampare la correlazione tra features e target
+print(correlation_with_target)
+
+
 units_features = {
     'X1 transaction date': 'anno.mese (es. 2013.250 = 2013 marzo)',
     'X2 house age': 'anni',
